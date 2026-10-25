@@ -162,12 +162,10 @@ canvas.renderAll();
 var resizableContainer=0;
 
 document.addEventListener('DOMContentLoaded',function() {
+resizableContainer=$('resizable-container');
 $('bg-color').addEventListener('input',function (event) {
 var color=event.target.value;
 canvas.setBackgroundColor(color,canvas.renderAll.bind(canvas));
-});
-$('bg-color').addEventListener('input',function (event) {
-resizableContainer=$('canvas-container');
 });
 });
 
@@ -266,7 +264,7 @@ reader.readAsDataURL(file);
 function changeView(elementId,isVisible) {
 var element=$(elementId);
 if (isVisible) {
-element.style.display="block";
+element.style.display=elementId==="layer-panel"?"flex":"block";
 } else {
 element.style.display="none";
 }

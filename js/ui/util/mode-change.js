@@ -43,8 +43,6 @@ document.documentElement.classList.remove('dark-mode','light-mode');
 document.documentElement.classList.add(mode);
 document.body.classList.remove('dark-mode','light-mode');
 document.body.classList.add(mode);
-var logo=$('navbar-logo');
-if(logo){logo.src=isDark?'02_images_svg/Logo/black_mode_logo.webp':'02_images_svg/Logo/light_mode_logo.webp';}
 var toggle=$('mode-toggle');
 if(toggle){toggle.checked=isDark;}
 }

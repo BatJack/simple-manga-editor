@@ -1,76 +1,79 @@
-
 /* ============================================================
    THEME TOGGLE (light / dark switch)
    ============================================================ */
 
 .theme-toggle-icon {
-  font-size: 16px;
-  color: var(--text-2);
-  pointer-events: none;
+font-size: 16px;
+color: var(--text-2);
+pointer-events: none;
 }
 
 .toggle-switchTermaMode {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 22px;
-  margin: 0 var(--space-2);
-  cursor: pointer;
+position: relative;
+display: inline-block;
+width: 40px;
+height: 22px;
+margin: 0 var(--space-2);
+cursor: pointer;
 }
 
 .toggle-switchTermaMode input {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
+position: absolute;
+opacity: 0;
+width: 0;
+height: 0;
 }
 
 .toggle-switchTermaMode .slider {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  box-sizing: border-box;
-  cursor: pointer;
-  background-color: var(--bg-3);
-  border: 1px solid var(--border-default);
-  transition: background-color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
-  border-radius: var(--radius-pill);
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+margin: 0;
+box-sizing: border-box;
+cursor: pointer;
+background-color: var(--bg-3);
+border: 1px solid var(--border-default);
+border-radius: var(--radius-pill);
+transition: background-color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+}
+
+.toggle-switchTermaMode:hover .slider {
+border-color: var(--border-strong);
 }
 
 .toggle-switchTermaMode .slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 2px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: var(--text-1);
-  border-radius: 50%;
-  transition: transform var(--dur-2) var(--ease), background-color var(--dur-2) var(--ease);
+position: absolute;
+content: "";
+height: 16px;
+width: 16px;
+left: 2px;
+top: 50%;
+transform: translateY(-50%);
+background-color: var(--text-1);
+border-radius: 50%;
+transition: transform var(--dur-2) var(--ease), background-color var(--dur-2) var(--ease);
 }
 
 .toggle-switchTermaMode input:checked + .slider {
-  background-color: var(--accent-dim);
-  border-color: var(--accent);
+background-color: var(--accent);
+border-color: var(--accent);
 }
 
 .toggle-switchTermaMode input:checked + .slider:before {
-  transform: translate(18px, -50%);
-  background-color: var(--accent);
+transform: translate(18px, -50%);
+background-color: var(--toggle-button-color);
 }
 
 .toggle-switchTermaMode input:focus-visible + .slider {
-  outline: var(--focus-ring);
-  outline-offset: 2px;
+outline: var(--focus-ring);
+outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .toggle-switchTermaMode .slider,
-  .toggle-switchTermaMode .slider:before {
-    transition: none;
-  }
+.toggle-switchTermaMode .slider,
+.toggle-switchTermaMode .slider:before {
+transition: none;
+}
 }

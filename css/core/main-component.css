@@ -15,13 +15,130 @@
   height: 48px;
   min-height: 48px;
   font-size: var(--font-size-base);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-default);
   box-shadow: none;
 }
 
+/* Below the lg breakpoint the navbar collapses into the toggler menu instead of
+   keeping every item in one row, which overflowed the viewport at ~852px. */
+@media (max-width: 991.98px) {
+  .custom-navbar {
+    position: relative;
+    height: 48px;
+    min-height: 48px;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .custom-navbar .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-basis: auto;
+    max-width: 100%;
+    max-height: calc(100vh - 49px);
+    max-height: calc(100dvh - 49px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-0);
+    border-bottom: 1px solid var(--border-default);
+    box-shadow: var(--elev-2);
+    z-index: var(--z-dropdown);
+  }
+
+  .custom-navbar .navbar-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+  }
+
+  .custom-navbar .navbar-nav > .nav-item {
+    width: 100%;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .custom-navbar .navbar-nav > .nav-item:last-child {
+    border-bottom: none;
+  }
+
+  .custom-navbar .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Submenus open in place so the whole panel scrolls as one list
+     instead of floating absolute boxes clipped by the collapsed menu. */
+  .custom-navbar .navbar-nav .dropdown-menu {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 2px 0 6px;
+    background: var(--bg-1);
+    border: none;
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+  }
+
+  .custom-navbar .navbar-nav .dropdown-menu.show {
+    animation: none;
+  }
+
+  .custom-navbar .navbar-nav.ms-auto {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding: var(--space-2) 0 0;
+    border-top: 1px solid var(--border-default);
+  }
+
+  .custom-navbar .navbar-nav.ms-auto > .nav-item {
+    width: auto;
+    border-bottom: none;
+  }
+
+  .custom-navbar .navbar-toggler {
+    margin-left: 0;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 30px;
+    max-height: 30px;
+    padding: 0 8px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .custom-navbar .navbar-toggler-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .custom-navbar .navbar-toggler:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-dim);
+  }
+}
+
+/* Shrinkable canvas viewport: on narrow screens the pane gives up width to the
+   side panels instead of pushing them off-screen. The 600px artboard minimum is
+   preserved inside .resizable-container, which scrolls horizontally when needed. */
 #canvas-area {
-  min-width: var(--min-width-600);
-  width: var(--width-100);
+  min-width: 0;
+  flex: 1 1 auto;
+  width: auto;
   margin-right: var(--margin-right-10);
 }
 
@@ -36,7 +153,7 @@
   height: var(--main-height);
   max-height: var(--main-height);
   background: var(--bg-0);
-  border-right: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-default);
   display: var(--display-flex);
   flex-direction: column;
   align-items: var(--align-items-center);
@@ -69,7 +186,7 @@
   scrollbar-gutter: stable;
   flex-shrink: 0;
   background: var(--bg-1);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
 }
 
@@ -78,21 +195,21 @@
   max-width: var(--max-width-layer-panel);
   flex: var(--flex-layer-panel);
   background: var(--bg-1);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   box-sizing: border-box;
 }
 
 #canvas-area > .area-header button,
 #layer-panel > .area-header button {
-  background: var(--bg-2);
-  border: 1px solid var(--border-subtle);
+  background: var(--bg-0);
+  border: 1px solid var(--border-default);
   color: var(--text-1);
   margin: 0 1px;
-  padding: 2px 5px;
+  padding: 3px 7px;
   border-radius: var(--radius-sm);
-  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
-  font-size: 11px;
+  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+  font-size: 12px;
 }
 #canvas-area > .area-header button:hover,
 #layer-panel > .area-header button:hover {
@@ -132,7 +249,7 @@
   height: var(--main-height);
   max-height: var(--main-height);
   background: var(--bg-1);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   box-sizing: border-box;
 }
@@ -144,21 +261,29 @@
   color: var(--text-1);
 }
 .custom-navbar .nav-link {
-  font-size: 11px;
-  padding: 5px 9px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 10px;
   border-radius: var(--radius-sm);
-  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
 }
 .custom-navbar .nav-link:hover {
   background-color: var(--hover);
   color: var(--text-0);
 }
+/* HF-style active tab: ink text + signal-yellow underline */
+.custom-navbar .nav-link.active,
+.custom-navbar .nav-link.show {
+  color: var(--text-0);
+  background-color: transparent;
+  box-shadow: inset 0 -2px 0 var(--hf-yellow);
+}
 .custom-navbar .dropdown-item {
-  font-size: 11px;
+  font-size: 12.5px;
   width: auto;
-  padding: 5px 10px 5px 18px;
+  padding: 7px 10px 7px 18px;
   border-radius: var(--radius-sm);
-  margin: 0 4px;
+  margin: 0 6px;
   transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
 }
 .custom-navbar .dropdown-item .material-icons,
@@ -169,15 +294,13 @@
 }
 
 .custom-navbar .dropdown-menu {
-  background-color: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background-color: var(--bg-0);
+  color: var(--text-1);
   border: 1px solid var(--border-default);
   min-width: 280px;
-  border-radius: var(--radius-md);
-  box-shadow: var(--glass-hl), var(--elev-2);
-  border-top: 2px solid var(--accent);
-  padding: 4px 0;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--elev-2);
+  padding: 6px 0;
   --bs-dropdown-link-color: var(--text-1);
   --bs-dropdown-link-hover-color: var(--text-0);
   --bs-dropdown-link-hover-bg: var(--hover-strong);
@@ -206,12 +329,12 @@
 
 .custom-navbar .dropdown-menu > label {
   display: block;
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-2);
-  padding: 6px 8px 2px;
+  padding: 8px 10px 4px;
   margin-top: 4px;
   border-top: 1px solid var(--border-subtle);
 }
@@ -232,11 +355,20 @@
 }
 
 .custom-navbar .navbar-toggler-icon {
-  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba(242,237,230,0.85)" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+  background-image: none;
+  background-color: var(--text-1);
+  -webkit-mask-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="%23000" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+  mask-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="%23000" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 
-.light-mode .custom-navbar .navbar-toggler-icon {
-  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba(33,27,21,0.85)" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+.custom-navbar .navbar-toggler:hover .navbar-toggler-icon {
+  background-color: var(--text-0);
 }
 
 .custom-navbar label {
@@ -247,14 +379,20 @@
 #sidebar i {
   margin-bottom: 2px;
   padding: 8px;
+  font-size: 20px;
   color: var(--sidebar-icon-color);
   border-radius: var(--radius-sm);
-  transition: color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease);
+  transition: color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
 }
-#sidebar i:hover,
-#sidebar i.active {
+#sidebar i:hover {
   color: var(--text-0);
   background-color: var(--hover);
+}
+/* HF-style selected tool: yellow-tinted chip with ink icon */
+#sidebar i.active {
+  color: var(--text-0);
+  background-color: var(--hf-yellow-tint);
+  box-shadow: inset 0 0 0 1px var(--accent);
 }
 
 /* ---- Panel internals ---- */

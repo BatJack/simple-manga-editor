@@ -1,42 +1,80 @@
 @import url('root.css');
 
 .tagify {
-  --tags-border-color: var(--color-dark-grey);
-  --tags-hover-border-color: var(--border-color-C);
-  --tags-focus-border-color: var(--border-color-C);
-  width: 100%;
-  max-width: none;
-  background-color: var(--color-secondary);
+--tags-border-color: var(--border-default);
+--tags-hover-border-color: var(--border-strong);
+--tags-focus-border-color: var(--accent);
+--tag-bg: var(--bg-2);
+--tag-hover: var(--hover-strong);
+--tag-text-color: var(--text-0);
+--tag-remove-btn-color: var(--text-2);
+--tag-remove-btn-bg--hover: var(--bg-3);
+--tag-inside-insensitive-bg: var(--bg-3);
+--tag-pad: 0.3em 0.5em;
+width: 100%;
+max-width: none;
+background-color: var(--bg-0);
+border-radius: var(--radius-sm);
+color: var(--text-0);
 }
+
+.tagify--focus {
+box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
 .tagify__tag {
-  --tag-bg: var(--button-backgroun);
-  --tag-hover: var(--border-color-C);
-  --tag-text-color: var(--color-text-secondary);
-  --tag-border-radius: var(--fjm-button-border-radius);
-  --tag-pad: 0.3em 0.5em;
+--tag-border-radius: var(--radius-sm);
 }
+
 .tagify__tag > div {
-  color: var(--color-text-secondary) !important;
+color: var(--text-0) !important;
+border-radius: var(--radius-sm);
 }
+
+.tagify__tag > div::before {
+box-shadow: none;
+}
+
 .tagify__tag__removeBtn {
-  color: var(--danger);
+color: var(--text-2);
+transition: color var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
 }
+
+.tagify__tag__removeBtn:hover {
+color: var(--danger);
+background: var(--hover-strong);
+}
+
 .tagify__input {
-  color: var(--color-text-secondary);
+color: var(--text-0);
 }
+
 .tagify__input::placeholder {
-  color: var(--slider-accent);
-  opacity: 1;
+color: var(--text-2);
+opacity: 1;
 }
+
 .tagify__dropdown {
-  background-color: var(--color-secondary);
-  color: var(--color-text-secondary);
-  overflow-y: auto;
+background-color: var(--bg-0);
+border: 1px solid var(--border-default);
+border-radius: var(--radius-md);
+box-shadow: var(--elev-2);
+color: var(--text-0);
+overflow-y: auto;
 }
+
 .tagify__dropdown__wrapper {
-  max-height: inherit;
-  overflow: auto;
+max-height: inherit;
+overflow: auto;
 }
+
+.tagify__dropdown__item {
+color: var(--text-1);
+border-radius: var(--radius-sm);
+transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+
 .tagify__dropdown__item--active {
-  background-color: var(--color-dark-grey);
+background-color: var(--hover-strong);
+color: var(--text-0);
 }

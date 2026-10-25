@@ -15,12 +15,18 @@
 - [x] gallery（检查后已合规）、custom-html-components（检查后已合规）
 - [x] ComfyUI 工作流编辑器 / form / tagify / tippy / controls-mini / image-control-manager / layout / layout-layer / responsive
   - 版本：上述 CSS 为 `?v=7.4`，`CACHE_VERSION` = `manga-editor-v12`
+- [x] P0 批次：`html/common.css`（帮助页主题重做）、`html/functionList.html` 内联样式、`css/ui/custom-html-components.css` 死代码清理、`css/styles-css.css` token 化
+  - 版本：`css/styles-css.css` = `?v=7.4`，`CACHE_VERSION` = `manga-editor-v13`
+- [x] P1 批次：floating-window 面板重做、`components.css` 视觉细节、图层列表 token 化、导航栏 mask 图标、`.input-container` 弹性最小宽、启动引导层 token 化
+  - 版本：`main-component.css` / `common.css` / `components.css` / `custom-html-components.css` = `?v=7.4`，`CACHE_VERSION` = `manga-editor-v14`
+- [x] P2 批次：`--margin-right-5px` 变量修复、`toast.css` 时长注明、legacy 别名清零
+  - 版本：`layout.css` / `layout-layer.css` / `form.css` / `common.css` = `?v=7.5`，`toast.css` / `image-prompt-helper.css` = `?v=7.4`，`gallery.css` = `?v=7.6`，`CACHE_VERSION` = `manga-editor-v15`
 
 ---
 
 ## P0 — 完全未统一（下一批优先）
 
-### [ ] 1. 帮助页共享样式表（71 个帮助页）
+### [x] 1. 帮助页共享样式表（71 个帮助页）
 
 - 文件：`html/common.css`
 - 问题：
@@ -37,19 +43,19 @@
   - 表格 hover `--hover`；`code` 用 `--bg-2` + `--font-mono`
 - 验收：深/浅两主题下帮助页可读、无紫色残留、无硬编码色值；`npm` 校验无未定义变量；窄屏 768px 不溢出
 
-### [ ] 2. functionList.html 内联样式
+### [x] 2. functionList.html 内联样式
 
 - 文件：`html/functionList.html`（L8-18 内联 `<style>`）
 - 问题：`color:#fff`（L11）、`background:rgba(124,77,255,.2)`（L17）
 - 建议：改用 token（`--accent` / `--accent-dim` / `--text-0`），必要时把内联样式并入 `html/common.css`
 
-### [ ] 3. 清理注释死代码
+### [x] 3. 清理注释死代码
 
 - 文件：`css/ui/custom-html-components.css`（L3-10）
 - 问题：注释块内的旧输入框样式含 `#3a3a3a` / `#4a4a4a` / `#fff`
 - 建议：直接删除该注释块
 
-### [ ] 4. 通用页面模板确认
+### [x] 4. 通用页面模板确认
 
 - 文件：`css/styles-css.css`
 - 问题：header / nav / footer 全部走 legacy 别名（`--color-secondary`、`--color-text-primary`），无新 token
@@ -59,7 +65,7 @@
 
 ## P1 — 部分处理 / 修复真实缺陷
 
-### [ ] 5. floating-window 提示面板对比度 bug
+### [x] 5. floating-window 提示面板对比度 bug
 
 - 文件：`css/common.css`（L36-73）
 - 问题：
@@ -68,7 +74,7 @@
   - 输入框边框恒为强调黄 `--color-input-focus-border`，无法区分常态与 focus
 - 建议：标题 `--bg-1` 底 + `--text-0` 字 + 底部 `--border-subtle`；面板 `--bg-0` + `--radius-md` + `--elev-3` + 内边距 `--space-3`；输入框常态 `--border-default`，focus 才用 `--accent` + `--accent-dim` 光晕
 
-### [ ] 6. 主栏组件视觉细节
+### [x] 6. 主栏组件视觉细节
 
 - 文件：`css/components.css`
 - 问题：
@@ -77,19 +83,19 @@
   - `#svg_icon_results`（L105）仍用 legacy 圆角
 - 建议：分组标题改 11px / 600 / `--text-2` / 大写 + letter-spacing；状态标签改 `--text-2`；空态文字改 `--text-2`；圆角 `--radius-sm`
 
-### [ ] 7. 图层列表面板收尾
+### [x] 7. 图层列表面板收尾
 
 - 文件：`css/layout-layer.css`
 - 问题：图层名称/按钮仍用 legacy（`--text-color-B`、`--fjm-button-border-radius`、`--layer-*` 别名）
 - 建议：按需替换为 `--text-0`、`--radius-sm`、`--bg-2`、`--hover-strong`；`ai-spin 0.8s`（L214）可保留
 
-### [ ] 8. 导航栏残留硬编码
+### [x] 8. 导航栏残留硬编码
 
 - 文件：`css/core/main-component.css`
 - 问题：L245 / L249 汉堡图标 SVG data-URI 内 stroke `rgba(229,231,235,.9)` / `rgba(17,24,39,.85)`；L273 `inset 0 0 0 1px rgba(255,210,30,.45)`
 - 建议：前者属 data-URI 无法引用 CSS 变量，可用 `mask-image` + `background-color:var(--text-0)` 方案替代；后者改 `--accent-dim` / `--accent`
 
-### [ ] 9. 固定像素宽度
+### [x] 9. 固定像素宽度
 
 - 文件：`css/ui/custom-html-components.css`（L16、L25）
 - 问题：`.input-container` `min-width:150px`、`.input-container-leftSpace` `min-width:140px`
@@ -99,35 +105,41 @@
 
 ## P2 — 变量与细节
 
-### [ ] 10. 未定义变量
+### [x] 10. 未定义变量
 
 - 文件：`css/layout.css`（L225）
 - 问题：`.info-item .fab { margin-right: var(--margin-right-5) }`，root.css 只有 `--margin-right-5px`，当前实际失效
 - 建议：改为 `var(--margin-right-5px)`
 
-### [ ] 11. 非 token 时长
+### [x] 11. 非 token 时长
 
 - 文件：`css/toast.css`（L76）：`transition: width 20ms linear` → `var(--dur-1) var(--ease)` 或保留但注明原因
 - `css/ui/overlay-progress.css`（L5）`1.5s` 与 `ai-spin 0.8s` 为 spinner 时长，可保留
 
-### [ ] 12. legacy 别名统一（可选，不影响显示）
+### [x] 12. legacy 别名统一（可选，不影响显示）
 
-| 文件 | 处数 |
-|------|------|
-| `css/form.css` | 26 |
-| `css/layout-layer.css` | 7 |
-| `css/layout.css` | 7 |
-| `css/ui/gallery.css` | 6 |
-| `css/common.css` | 5 |
-| `css/components.css` | 3 |
-| `css/styles-css.css` | 3 |
-| `css/ui/custom-html-components.css` | 2 |
-| `css/ui/image-prompt-helper.css` | 1 |
+已清零：`layout-layer.css`、`gallery.css`、`form.css`、`common.css`、`layout.css`、`image-prompt-helper.css` 中 60 处 legacy 别名全部替换为 `--bg-*` / `--text-*` / `--border-*` / `--accent` / `--radius-*`；`root.css` 中的别名定义保留（JS 仍通过 `getCssValue` 读取）。
 
-### [ ] 13. 启动引导层内联色值（可接受例外）
+### [x] 13. 启动引导层内联色值
 
-- 文件：`index.html`（L67-139）
-- 说明：CSS 加载前的前置样式，无法引用 root.css token；如要彻底统一需另设内联 boot token
+- 文件：`index.html`（boot 内联 `<style>` + SVG 生成逻辑）
+- 处理：head 提前引入 `css/root.css`（渲染阻塞，首屏前即可用 token）；`.hf-boot` 直接使用 `--bg-0` / `--text-0`，局部变量映射为 `--border-default` / `--text-2` / `--bg-1` / `--bg-2`；删除 `.hf-boot--light/--dark` 两套硬编码底色与 `isLight` 判断，跟随 html 主题类自动切换；SVG 多边形描边改 CSS `stroke:var(--border-strong)`，就绪高亮改 `style.stroke="var(--hf-yellow-strong)"`
+- 验证：深色 `rgb(11,15,25)` / `rgb(229,231,235)`，浅色 `rgb(255,255,255)` / `rgb(17,24,39)` 随主题自动切换；polygon 初始 `rgba(255,255,255,.22)`、就绪 `rgb(255,157,0)`；无控制台错误与 404
+
+---
+
+## P3 — 新发现（非本次样式改造引入）
+
+### [x] 14. 852px 宽度下顶部导航栏溢出
+
+- 现象：视口 852px 时 `scrollWidth=899`，超出元素为 `#navbarNavDropdown.collapse`（right≈899、width≈845），其下 `.navbar-nav.ms-auto`（right≈889）
+- 根因：导航使用 `navbar-expand`（Bootstrap 5 无断点版本 = 任何宽度都强制单行展开），且汉堡按钮仍是 Bootstrap 4 的 `data-toggle/data-target`，在 5.2.3 bundle 下实际不可用
+- 处理：
+  - `index.html`：`navbar-expand` → `navbar-expand-lg`；汉堡按钮改 `data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"`
+  - `css/core/main-component.css`：新增 `@media (max-width:991.98px)`，导航固定 48px 高，`.navbar-collapse` 改为绝对定位下拉面板（`top:100%`、`left/right:0`、`--bg-0`、`--elev-2`、`--z-dropdown`），左菜单竖向、右侧 `.navbar-nav.ms-auto` 横向可换行；toggler 右对齐 + `--accent-dim` 焦点环
+- 验证：852px 下 `scrollWidth=844 = clientWidth`，导航高度 48px；菜单可展开/关闭，`File` 下拉 `clientHeight=390px` 未被裁剪；无控制台错误与 404
+- 版本：`main-component.css` = `?v=7.6`，`CACHE_VERSION` = `manga-editor-v17`
+- 备注：≥992px 桌面布局不变（原 `navbar-expand` 的展开规则与 `navbar-expand-lg` 在宽屏下等价）
 
 ---
 

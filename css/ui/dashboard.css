@@ -5,7 +5,9 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(10, 8, 6, 0.62);
+    background: var(--overlay);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     z-index: var(--z-modal);
     display: none;
     justify-content: center;
@@ -19,9 +21,11 @@
     height: 85vh;
     display: flex;
     flex-direction: column;
-    background: var(--color-base);
-    border-radius: var(--fjm-border-radius);
-    border: 1px solid var(--color-secondary);
+    background: var(--bg-0);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-default);
+    box-shadow: var(--elev-3);
+    animation: caldera-modal-in var(--dur-3) var(--ease-spring);
 }
 
 .dashboard-modal-close-btn {
@@ -30,8 +34,8 @@
     right: 10px;
     background: none;
     border: none;
-    color: var(--color-text-primary);
-    font-size: 20px;
+    color: var(--text-2);
+    font-size: 19px;
     cursor: pointer;
     z-index: 3;
     width: 30px;
@@ -39,11 +43,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--fjm-button-border-radius);
+    border-radius: var(--radius-sm);
+    transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
 }
 
 .dashboard-modal-close-btn:hover {
     background: var(--hover-strong);
+    color: var(--text-0);
 }
 
 /* Dashboard Styles */
@@ -60,34 +66,36 @@
     margin-bottom: 20px;
     padding-bottom: 12px;
     padding-right: 36px;
-    border-bottom: 1px solid var(--color-secondary);
+    border-bottom: 1px solid var(--border-default);
     position: sticky;
     top: -16px;
     z-index: 2;
-    background: var(--color-base);
+    background: var(--bg-0);
     margin: -16px -16px 20px -16px;
     padding: 16px 52px 12px 16px;
 }
 
 .dashboard-header h3 {
     margin: 0;
-    color: var(--accent);
-    font-size: 18px;
+    color: var(--text-0);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .dashboard-clear-btn {
-    background: var(--danger);
-    color: var(--color-text-primary);
-    border: none;
+    background: var(--btn-danger-bg);
+    color: var(--danger);
+    border: 1px solid var(--btn-danger-border-color);
     padding: 6px 12px;
-    border-radius: var(--fjm-button-border-radius);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 12px;
-    transition: background 0.2s;
+    transition: background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
 }
 
 .dashboard-clear-btn:hover {
-    background: var(--danger);
+    background: var(--btn-danger-hover-bg);
 }
 
 /* Summary Cards */
@@ -99,32 +107,36 @@
 }
 
 .summary-card {
-    background: var(--color-base);
-    border-radius: var(--fjm-border-radius);
-    padding: 8px 10px;
+    background: var(--bg-0);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
     text-align: center;
-    border: 1px solid var(--color-secondary);
+    border: 1px solid var(--border-default);
 }
 
 .summary-value {
     font-size: 16px;
-    font-weight: bold;
-    color: var(--accent);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--text-0);
     margin-bottom: 2px;
 }
 
 .summary-label {
     font-size: 10px;
-    color: var(--slider-accent);
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* Dashboard Sections */
 .dashboard-section {
-    background: var(--color-base);
-    border-radius: var(--fjm-border-radius);
+    background: var(--bg-1);
+    border-radius: var(--radius-md);
     padding: 16px;
     margin-bottom: 16px;
-    border: 1px solid var(--color-secondary);
+    border: 1px solid var(--border-default);
 }
 
 .section-header {
@@ -136,24 +148,28 @@
 
 .section-header h4 {
     margin: 0;
-    color: var(--color-text-primary);
-    font-size: 14px;
+    color: var(--text-0);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 /* Mode Selector */
 .mode-selector {
-    background: var(--color-base);
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-tertiary);
+    background: var(--bg-0);
+    color: var(--text-1);
+    border: 1px solid var(--border-default);
     padding: 4px 8px;
-    border-radius: var(--textarea-border-radius);
+    border-radius: var(--radius-sm);
     font-size: 12px;
     cursor: pointer;
+    transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
 }
 
 .mode-selector:focus {
     outline: none;
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-dim);
 }
 
 /* Stats Table */
@@ -171,27 +187,29 @@
 .stats-table td {
     padding: 8px 12px;
     text-align: left;
-    border-bottom: 1px solid var(--color-secondary);
+    border-bottom: 1px solid var(--border-default);
 }
 
 .stats-table th {
-    color: var(--slider-accent);
-    font-weight: normal;
+    color: var(--text-2);
+    font-weight: 600;
     font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .stats-table td {
-    color: var(--color-text-primary);
+    color: var(--text-0);
 }
 
 .stats-table tbody tr:hover {
-    background: var(--color-secondary);
+    background: var(--hover);
 }
 
 /* Chart Container */
 .chart-container {
-    background: var(--color-base);
-    border-radius: var(--fjm-button-border-radius);
+    background: var(--bg-1);
+    border-radius: var(--radius-sm);
     padding: 8px;
 }
 
@@ -208,7 +226,7 @@
 
 .tag-item {
     padding: 8px 0;
-    border-bottom: 1px solid var(--color-secondary);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .tag-item:last-child {
@@ -223,21 +241,23 @@
 }
 
 .tag-name {
-    color: var(--color-text-primary);
+    color: var(--text-0);
     font-size: 13px;
     word-break: break-all;
 }
 
 .tag-count {
-    color: var(--accent);
+    color: var(--text-0);
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 600;
     min-width: 30px;
     text-align: right;
 }
 
 .tag-bar-container {
-    background: var(--color-secondary);
+    background: var(--bg-2);
     height: 4px;
     border-radius: var(--radius-sm);
     overflow: hidden;
@@ -245,13 +265,13 @@
 
 .tag-bar {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--ok));
+    background: var(--hf-yellow);
     border-radius: var(--radius-sm);
-    transition: width 0.3s ease;
+    transition: width var(--dur-3) var(--ease);
 }
 
 .no-tags {
-    color: var(--slider-accent);
+    color: var(--text-2);
     text-align: center;
     padding: 20px;
     font-size: 13px;
@@ -283,7 +303,7 @@
 .heatmap-label {
     width: 40px;
     font-size: 10px;
-    color: var(--slider-accent);
+    color: var(--text-2);
     text-align: right;
     padding-right: 8px;
     flex-shrink: 0;
@@ -293,7 +313,7 @@
     width: 20px;
     height: 16px;
     font-size: 9px;
-    color: var(--slider-accent);
+    color: var(--text-2);
     text-align: center;
     flex-shrink: 0;
 }
@@ -304,7 +324,7 @@
     border-radius: var(--radius-sm);
     flex-shrink: 0;
     cursor: pointer;
-    transition: transform 0.1s;
+    transition: transform var(--dur-1) var(--ease);
 }
 
 .heatmap-cell:hover {
@@ -320,31 +340,31 @@
 
 /* Small Clear Button */
 .dashboard-clear-btn-small {
-    background: var(--danger);
-    color: var(--color-text-primary);
-    border: none;
+    background: var(--btn-danger-bg);
+    color: var(--danger);
+    border: 1px solid var(--btn-danger-border-color);
     padding: 4px 8px;
-    border-radius: var(--fjm-button-border-radius);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 11px;
-    transition: background 0.2s;
+    transition: background-color var(--dur-1) var(--ease);
 }
 
 .dashboard-clear-btn-small:hover {
-    background: var(--danger);
+    background: var(--btn-danger-hover-bg);
 }
 
 /* Download Button */
 .dashboard-download-btn {
-    background: var(--accent);
-    color: var(--color-base);
-    border: none;
+    background: var(--hf-yellow);
+    color: var(--hf-ink);
+    border: 1px solid var(--hf-yellow-strong);
     padding: 4px 8px;
-    border-radius: var(--fjm-button-border-radius);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 11px;
-    font-weight: bold;
-    transition: background 0.2s;
+    font-weight: 600;
+    transition: background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
 }
 
 .dashboard-download-btn:hover {
@@ -353,8 +373,8 @@
 
 /* Wordcloud */
 .wordcloud-container {
-    background: var(--color-base);
-    border-radius: var(--fjm-button-border-radius);
+    background: var(--bg-1);
+    border-radius: var(--radius-sm);
     padding: 8px;
     overflow: visible;
 }
@@ -376,11 +396,11 @@
 .streak-card {
     flex: 1;
     min-width: 80px;
-    background: var(--color-base);
-    border-radius: var(--fjm-border-radius);
+    background: var(--bg-0);
+    border-radius: var(--radius-md);
     padding: 12px;
     text-align: center;
-    border: 1px solid var(--color-secondary);
+    border: 1px solid var(--border-default);
 }
 
 .streak-icon {
@@ -390,13 +410,17 @@
 
 .streak-value {
     font-size: 22px;
-    font-weight: bold;
-    color: var(--accent);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--text-0);
 }
 
 .streak-label {
     font-size: 10px;
-    color: var(--slider-accent);
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     margin-top: 2px;
 }
 
@@ -422,7 +446,7 @@
 
 .calendar-month-label {
     font-size: 9px;
-    color: var(--slider-accent);
+    color: var(--text-2);
     text-align: left;
 }
 
@@ -442,7 +466,7 @@
     width: 24px;
     height: 11px;
     font-size: 9px;
-    color: var(--slider-accent);
+    color: var(--text-2);
     text-align: right;
     line-height: 11px;
 }
@@ -466,7 +490,7 @@
 }
 
 .calendar-cell:hover {
-    outline: 1px solid var(--color-text-primary);
+    outline: 1px solid var(--border-strong);
     outline-offset: -1px;
 }
 
@@ -482,7 +506,7 @@
     margin-top: 8px;
     justify-content: flex-end;
     font-size: 9px;
-    color: var(--slider-accent);
+    color: var(--text-2);
 }
 
 .calendar-legend-cell {
@@ -540,24 +564,27 @@
 }
 
 .goal-label {
-    color: var(--color-text-primary);
+    color: var(--text-0);
     font-size: 12px;
     min-width: 80px;
 }
 
 .goal-input {
     width: 70px;
-    background: var(--color-base);
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-tertiary);
+    background: var(--bg-0);
+    color: var(--text-0);
+    border: 1px solid var(--border-default);
     padding: 4px 8px;
-    border-radius: var(--textarea-border-radius);
+    border-radius: var(--radius-sm);
     font-size: 12px;
+    font-family: var(--font-mono);
+    transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
 }
 
 .goal-input:focus {
     outline: none;
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-dim);
 }
 
 .goal-save-btn {
@@ -565,8 +592,8 @@
 }
 
 .goal-progress-wrap {
-    background: var(--color-secondary);
-    border-radius: var(--radius-md);
+    background: var(--bg-2);
+    border-radius: var(--radius-pill);
     height: 20px;
     overflow: hidden;
     position: relative;
@@ -574,9 +601,9 @@
 
 .goal-progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--ok));
-    border-radius: var(--radius-md);
-    transition: width 0.4s ease;
+    background: var(--hf-yellow);
+    border-radius: var(--radius-pill);
+    transition: width var(--dur-3) var(--ease);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -585,9 +612,8 @@
 
 .goal-progress-bar span {
     font-size: 10px;
-    color: var(--color-text-primary);
+    color: var(--hf-ink);
     white-space: nowrap;
-    text-shadow: 0 0 2px rgba(0,0,0,0.5);
 }
 
 /* Badges */
@@ -598,16 +624,17 @@
 }
 
 .badge-item {
-    background: var(--color-base);
-    border-radius: var(--fjm-border-radius);
+    background: var(--bg-0);
+    border-radius: var(--radius-md);
     padding: 10px 6px;
     text-align: center;
-    border: 1px solid var(--color-secondary);
-    transition: transform 0.2s;
+    border: 1px solid var(--border-default);
+    transition: transform var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
 }
 
 .badge-item:hover {
     transform: scale(1.05);
+    border-color: var(--border-strong);
 }
 
 .badge-item.badge-locked {
@@ -622,12 +649,12 @@
 
 .badge-name {
     font-size: 10px;
-    color: var(--color-text-primary);
+    color: var(--text-0);
     line-height: 1.2;
 }
 
 .badge-item.badge-locked .badge-name {
-    color: var(--slider-accent);
+    color: var(--text-2);
 }
 
 /* Export */
@@ -644,174 +671,29 @@
 
 .dashboard-container::-webkit-scrollbar-track,
 .top-tags-container::-webkit-scrollbar-track {
-    background: var(--color-base);
+    background: transparent;
 }
 
 .dashboard-container::-webkit-scrollbar-thumb,
 .top-tags-container::-webkit-scrollbar-thumb {
-    background: var(--color-tertiary);
-    border-radius: var(--radius-sm);
+    background: var(--border-strong);
+    border-radius: var(--radius-pill);
 }
 
 .dashboard-container::-webkit-scrollbar-thumb:hover,
 .top-tags-container::-webkit-scrollbar-thumb:hover {
-    background: var(--color-accent-hover);
+    background: var(--text-2);
 }
 
-/* Light theme */
-body:not(.dark-mode) .dashboard-modal-content {
-    background: var(--bg-1);
-    border-color: var(--border-subtle);
-}
-
-body:not(.dark-mode) .dashboard-header {
-    border-color: var(--border-subtle);
-    background: var(--bg-1);
-}
-
-body:not(.dark-mode) .dashboard-header h3 {
-    color: var(--accent-hover);
-}
-
-body:not(.dark-mode) .dashboard-section {
-    background: var(--bg-2);
-    border-color: var(--border-subtle);
-}
-
-body:not(.dark-mode) .section-header h4 {
-    color: var(--text-0);
-}
-
-body:not(.dark-mode) .summary-card {
-    background: var(--bg-2);
-    border-color: var(--border-subtle);
-}
-
-body:not(.dark-mode) .summary-value {
-    color: var(--accent-hover);
-}
-
-body:not(.dark-mode) .summary-label {
-    color: var(--text-2);
-}
-
-body:not(.dark-mode) .streak-card {
-    background: var(--bg-1);
-    border-color: var(--border-subtle);
-}
-
-body:not(.dark-mode) .streak-value {
-    color: var(--accent-hover);
-}
-
-body:not(.dark-mode) .streak-label {
-    color: var(--text-2);
-}
-
-body:not(.dark-mode) .chart-container {
-    background: var(--bg-1);
-}
-
-body:not(.dark-mode) .mode-selector {
-    background: var(--bg-1);
-    color: var(--text-0);
-    border-color: var(--border-default);
-}
-
-body:not(.dark-mode) .stats-table th {
-    color: var(--text-2);
-}
-
-body:not(.dark-mode) .stats-table td {
-    color: var(--text-0);
-}
-
-body:not(.dark-mode) .stats-table th,
-body:not(.dark-mode) .stats-table td {
-    border-color: var(--border-subtle);
-}
-
-body:not(.dark-mode) .stats-table tbody tr:hover {
-    background: var(--bg-2);
-}
-
-body:not(.dark-mode) .tag-name {
-    color: var(--text-0);
-}
-
-body:not(.dark-mode) .tag-count {
-    color: var(--accent-hover);
-}
-
-body:not(.dark-mode) .tag-bar-container {
-    background: var(--bg-3);
-}
-
-body:not(.dark-mode) .no-tags {
-    color: var(--text-2);
-}
-
-body:not(.dark-mode) .goal-input {
-    background: var(--bg-1);
-    color: var(--text-0);
-    border-color: var(--border-default);
-}
-
-body:not(.dark-mode) .goal-label {
-    color: var(--text-0);
-}
-
-body:not(.dark-mode) .goal-progress-wrap {
-    background: var(--bg-3);
-}
-
-body:not(.dark-mode) .badge-item {
-    background: var(--bg-1);
-    border-color: var(--border-subtle);
-}
-
-body:not(.dark-mode) .badge-name {
-    color: var(--text-0);
-}
-
-body:not(.dark-mode) .badge-item.badge-locked .badge-name {
-    color: var(--text-2);
-}
-
-body:not(.dark-mode) .wordcloud-container {
-    background: var(--bg-1);
-}
-
-body:not(.dark-mode) .dashboard-modal-close-btn {
-    color: var(--text-0);
-}
-
-body:not(.dark-mode) .dashboard-modal-close-btn:hover {
-    background: var(--hover-strong);
-}
-
-body:not(.dark-mode) .calendar-month-label,
-body:not(.dark-mode) .calendar-day-label,
-body:not(.dark-mode) .calendar-legend {
-    color: var(--text-2);
-}
-
-body:not(.dark-mode) .heatmap-label {
-    color: var(--text-2);
-}
-
-body:not(.dark-mode) .heatmap-hour {
-    color: var(--text-2);
-}
-
+/* Light theme scrollbars (surfaces already follow the shared tokens) */
 body:not(.dark-mode) .dashboard-container::-webkit-scrollbar-track,
 body:not(.dark-mode) .top-tags-container::-webkit-scrollbar-track {
-    background: var(--bg-2);
+    background: transparent;
 }
 
 body:not(.dark-mode) .dashboard-container::-webkit-scrollbar-thumb,
 body:not(.dark-mode) .top-tags-container::-webkit-scrollbar-thumb {
-    background: var(--bg-3);
+    background: var(--border-strong);
 }
 
 /* Responsive */

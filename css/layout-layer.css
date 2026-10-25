@@ -10,19 +10,19 @@ margin-bottom: var(--space-1);
 display: flex;
 align-items: center;
 padding: 3px 5px;
-border-bottom: 1px solid var(--layer-separator);
+border-bottom: 1px solid var(--border-subtle);
 transition: background-color var(--dur-1) var(--ease);
 cursor: pointer;
 gap: 4px;
 }
 
 .layer-item:hover {
-background-color: var(--layer-hover-bg) !important;
+background-color: var(--hover) !important;
 }
 
 .layer-item.layer-active {
-background-color: var(--layer-active-bg) !important;
-border-left: 3px solid var(--layer-active-border);
+background-color: var(--accent-dim) !important;
+border-left: 3px solid var(--accent);
 }
 
 .layer-preview {
@@ -32,9 +32,9 @@ min-width: var(--layer-preview-width);
 background-size: contain;
 background-repeat: no-repeat;
 background-position: center;
-background-color: var(--layer-preview-bg);
-border: 1px solid var(--layer-preview-border);
-border-radius: var(--fjm-button-border-radius);
+background-color: var(--bg-0);
+border: 1px solid var(--border-subtle);
+border-radius: var(--radius-sm);
 }
 
 .layer-details {
@@ -51,14 +51,14 @@ flex-grow: 1;
 overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
-border-radius: var(--textarea-border-radius);
+border-radius: var(--radius-sm);
 padding: 1px 4px;
-background-color: var(--layer-name-bg);
-border: 1px solid var(--layer-name-border);
+background-color: var(--bg-2);
+border: 1px solid var(--border-subtle);
 }
 
 .layer-name:focus {
-border-color: var(--layer-name-focus-border);
+border-color: var(--accent);
 outline: none;
 }
 
@@ -78,17 +78,17 @@ width: 20px;
 height: 20px;
 padding: 0;
 margin-right: 3px;
-border: 1px solid var(--layer-btn-border);
-background: var(--layer-btn-bg);
-color: var(--text-color-B);
+border: 1px solid var(--border-subtle);
+background: var(--bg-2);
+color: var(--text-1);
 cursor: pointer;
-border-radius: var(--fjm-button-border-radius);
-transition: background-color 0.15s;
+border-radius: var(--radius-sm);
+transition: background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
 font-size: 10px;
 }
 
 .layer-buttons button:hover {
-background-color: var(--layer-btn-hover);
+background-color: var(--hover-strong);
 }
 
 .layer-buttons button .material-icons {
@@ -96,14 +96,14 @@ font-size: 13px;
 }
 
 .layer-buttons .delete-layer-button {
-color: var(--text-color-B);
+color: var(--text-1);
 opacity: 0.6;
 font-size: 12px;
 font-weight: bold;
 }
 
 .layer-buttons .delete-layer-button:hover {
-background-color: var(--layer-btn-danger-hover);
+background-color: var(--btn-danger-hover-bg);
 opacity: 1;
 color: var(--danger);
 }
@@ -111,7 +111,7 @@ color: var(--danger);
 .layer-btn-separator {
 width: 1px;
 height: 14px;
-background-color: var(--layer-separator);
+background-color: var(--border-subtle);
 margin: 0 2px;
 }
 
@@ -128,11 +128,11 @@ align-items:center;
 gap:2px;
 padding:2px 4px;
 margin:0;
-border:1px solid var(--layer-btn-border);
-background:var(--layer-btn-bg);
-color:var(--text-color-B);
+border:1px solid var(--border-subtle);
+background:var(--bg-2);
+color:var(--text-1);
 cursor:pointer;
-border-radius:var(--fjm-button-border-radius);
+border-radius:var(--radius-sm);
 font-size:10px;
 white-space:nowrap;
 line-height:1;
@@ -145,19 +145,19 @@ font-size:12px;
 }
 
 .layer-action-btn:hover{
-background-color:var(--layer-btn-hover);
+background-color:var(--hover-strong);
 }
 
 .layer-action-sep{
 width:1px;
 height:14px;
-background-color:var(--layer-separator);
+background-color:var(--border-subtle);
 margin:0 2px;
 align-self:center;
 }
 
 .layer-item-nested {
-border-left: 2px solid var(--layer-nested-border);
+border-left: 2px solid var(--border-default);
 }
 
 #layer-panel {
@@ -178,7 +178,7 @@ display:inline-flex;
 align-items:center;
 gap:2px;
 padding:1px 4px;
-border-radius:var(--fjm-button-border-radius);
+border-radius:var(--radius-sm);
 font-size:10px;
 line-height:1.2;
 white-space:nowrap;
@@ -191,8 +191,8 @@ color:var(--ok);
 }
 
 .ai-task-waiting {
-background:rgba(210,153,34,0.14);
-border:1px solid rgba(210,153,34,0.4);
+background:var(--bg-2);
+border:1px solid var(--warn);
 color:var(--warn);
 }
 

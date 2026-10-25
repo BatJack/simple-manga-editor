@@ -1,8 +1,8 @@
 @import url('root.css');
 
 body {
- background-color: var(--background-color-A);
- color: var(--text-color-B);
+ background-color: var(--bg-0);
+ color: var(--text-1);
 }
 
 hr {
@@ -20,9 +20,9 @@ hr {
  display: inline-block;
  padding: 3px 8px;
  background: var(--btn-bg);
- color: var(--text-color-B);
+ color: var(--text-1);
  border: var(--btn-border);
- border-radius: var(--fjm-button-border-radius);
+ border-radius: var(--radius-sm);
  cursor: pointer;
  transition: var(--btn-transition);
  font-size: 14px;
@@ -125,10 +125,11 @@ input[type="search"],
 input[type="tel"],
 input[type="url"],
 textarea {
- background: var(--background-color-B);
- color: var(--text-color-B);
- border: var(--border-color-1px-solid-B);
+ background: var(--bg-1);
+ color: var(--text-1);
+ border: 1px solid var(--border-default);
  box-sizing: border-box;
+ transition: border-color var(--dur-1) var(--ease), background var(--dur-2) var(--ease), box-shadow var(--dur-1) var(--ease);
 }
 
 select:focus,
@@ -152,6 +153,7 @@ input[type="url"]:focus,
 textarea:focus {
  outline: none;
  border-color: var(--color-input-focus-border);
+ box-shadow: 0 0 0 3px var(--accent-dim);
 }
 
 .custom-navbar input[type="color"]:hover,
@@ -165,13 +167,13 @@ input[type="tel"]:hover,
 input[type="url"]:hover,
 textarea:hover {
  outline: none;
- border-color: var(--color-input-focus-border);
- background: var(--background-color-D);
+ border-color: var(--border-strong);
+ background: var(--bg-3);
 }
 
 p,
 i {
- color: var(--text-color-B);
+ color: var(--text-1);
 }
 
 button {
@@ -260,7 +262,7 @@ input[type="radio"]:checked {
 }
 
 label {
- color: var(--text-color-B);
+ color: var(--text-1);
  margin: 5px;
 }
 
@@ -269,11 +271,11 @@ a {
 }
 
 fieldset {
- border: var(--border-color-1px-solid-B);
+ border: 1px solid var(--border-default);
 }
 
 legend {
- color: var(--text-color-B);
+ color: var(--text-1);
 }
 
 ::-webkit-input-placeholder {
@@ -293,33 +295,33 @@ legend {
 
 table {
  border-collapse: collapse;
- background: var(--background-color-A);
- color: var(--text-color-B);
+ background: var(--bg-0);
+ color: var(--text-1);
 }
 
 th,
 td {
- border: var(--border-color-1px-solid-B);
+ border: 1px solid var(--border-default);
 }
 
 th {
- background: var(--button-background);
- color: var(--text-color-B);
+ background: var(--bg-2);
+ color: var(--text-1);
 }
 
 
 span {
- color: var(--text-color-B);
+ color: var(--text-1);
  margin-right: 3px;
  margin-left: 3px;
 }
 
 tr:nth-child(even) {
- background: var(--background-color-B);
+ background: var(--bg-1);
 }
 
 ::-webkit-scrollbar-track {
- background: var(--background-color-A);
+ background: var(--bg-0);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -331,13 +333,13 @@ tr:nth-child(even) {
 }
 
 progress {
- background: var(--background-color-B);
- color: var(--text-color-B);
- border: var(--border-color-1px-solid-B);
+ background: var(--bg-1);
+ color: var(--text-1);
+ border: 1px solid var(--border-default);
 }
 
 meter {
- background: var(--background-color-B);
- color: var(--text-color-B);
- border: var(--border-color-1px-solid-B);
+ background: var(--bg-1);
+ color: var(--text-1);
+ border: 1px solid var(--border-default);
 }

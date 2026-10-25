@@ -1,131 +1,103 @@
+/* ============================================================
+   TOASTS - Hugging Face surface: one quiet card, status accent edge
+   Legacy classes .toast-nier (success/info) and .toast-dbd (error)
+   keep working; they now share the same base component.
+   ============================================================ */
+
 .toast-achievement {
-  position: relative;
-  pointer-events: auto;
-  min-width: 180px;
-  max-width: 600px;
-  animation: sp-manga-slide-in 0.5s ease-out;
-  transition: height 0.3s ease-in-out;
-  word-wrap: break-word;
-  font-size: 12px;
- }
- 
- .toast-nier {
-  background: #f3efe9;
-  color: #4d453b;
-  padding: 12px 16px;
-  font-family: 'Share Tech Mono', monospace; ;
-  font-weight: 300;
-  letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
- }
- 
- .toast-nier::before {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  right: 3px;
-  bottom: 3px;
-  border: 1px solid rgba(33, 27, 21, 0.4);
- }
- 
- .toast-nier .toast-title {
-  font-size: 13px;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  font-weight: 500;
-  color: #211b15;
-  letter-spacing: 2px;
-  border-bottom: 1px solid rgba(33, 27, 21, 0.25);
-  padding-bottom: 4px;
+ position: relative;
+ pointer-events: auto;
+ min-width: 220px;
+ max-width: 420px;
+ padding: 11px 14px 12px;
+ background: var(--bg-0);
+ color: var(--text-1);
+ border: 1px solid var(--border-default);
+ border-radius: var(--radius-md);
+ box-shadow: var(--elev-2);
+ font-family: var(--font-ui);
+ font-size: 12.5px;
+ line-height: 1.5;
+ overflow: hidden;
+ animation: sp-manga-slide-in var(--dur-3) var(--ease-spring);
+ transition: height var(--dur-2) var(--ease);
 }
 
-
- 
- .toast-nier .toast-message {
-  font-size: 13px;
-  position: relative;
-  padding-left: 18px;
- }
- 
- .toast-nier .toast-message::before {
-  content: '⚔';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 10px;
-  opacity: .7;
- }
- 
- .toast-dbd {
-  background: rgba(26, 8, 5, 0.96);
-  color: #f08a72;
-  padding: 10px 14px;
-  font-family: 'Roboto Condensed', sans-serif;
-  border: 1px solid #e0553f;
-  position: relative;
-  text-transform: uppercase;
-  box-shadow: 0 0 15px rgba(224, 85, 63, 0.25), inset 0 0 15px rgba(224, 85, 63, 0.10);
-  letter-spacing: 1px;
- }
- 
- .toast-dbd::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      rgba(224, 85, 63, 0.05) 10px,
-      rgba(224, 85, 63, 0.05) 20px
-  );
-  pointer-events: none;
- }
- 
- .toast-dbd::after {
-  content: '☠';
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  font-size: 12px;
-  opacity: 0.5;
- }
- 
-
- .toast-dbd .toast-title {
-  font-size: 14px;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-  font-weight: bold;
-  color: #f08a72;
-  letter-spacing: 2px;
-  border-bottom: 1px solid rgba(224, 85, 63, 0.4);
-  padding-bottom: 4px;
-  position: relative;
-  z-index: 1;
+.toast-achievement::before {
+ content: '';
+ position: absolute;
+ left: 0;
+ top: 0;
+ bottom: 0;
+ width: 3px;
+ background: var(--hf-yellow);
 }
- 
- .toast-dbd .toast-message {
-  font-size: 13px;
-  word-break: break-all;
-  position: relative;
-  z-index: 1;
- }
- 
- .toast-progress-bar {
-  background-color: var(--color-tertiary);
- }
 
- .toast-progress-bar-error {
-  background-color: var(--btn-danger-color);
- }
- 
- #toast-container {
-  position: fixed;
-  z-index: var(--z-toast);
-  bottom: 20px;
-  right: 20px;
- }
+.toast-nier .toast-title,
+.toast-dbd .toast-title {
+ font-size: 11px;
+ font-weight: 600;
+ letter-spacing: .06em;
+ text-transform: uppercase;
+ color: var(--text-0);
+ padding: 0 0 4px 8px;
+ margin-bottom: 4px;
+ border-bottom: 1px solid var(--border-subtle);
+}
+
+.toast-nier .toast-message,
+.toast-dbd .toast-message {
+ padding-left: 8px;
+ font-size: 12.5px;
+ color: var(--text-1);
+ word-break: break-word;
+}
+
+.toast-dbd {
+ border-color: var(--btn-danger-border-color);
+}
+
+.toast-dbd::before {
+ background: var(--danger);
+}
+
+.toast-dbd .toast-title {
+ color: var(--danger);
+}
+
+.toast-achievement .progress {
+ background: var(--bg-2);
+ border-radius: var(--radius-pill);
+ overflow: hidden;
+}
+
+.toast-progress-bar {
+ background-color: var(--hf-yellow);
+ /* 宽度由 JS 逐帧更新，20ms 仅用于平滑抖动，不纳入全局运动节奏 token */
+ transition: width 20ms linear;
+}
+
+.toast-progress-bar-error {
+ background-color: var(--danger);
+}
+
+#sp-manga-toastContainer {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-end;
+ gap: 8px;
+ z-index: var(--z-toast);
+}
+
+@keyframes sp-manga-slide-in {
+ from { opacity: 0; transform: translateY(12px); }
+ to   { opacity: 1; transform: none; }
+}
+
+@keyframes sp-manga-fade-out {
+ to { opacity: 0; transform: translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+ .toast-achievement { animation: none; }
+}

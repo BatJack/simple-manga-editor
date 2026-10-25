@@ -1,49 +1,60 @@
 .flow-floating-window {
-  position: absolute;
-  background-color: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: var(--border-color-1px-solid-B);
-  border-radius: var(--fjm-border-radius);
-  z-index: var(--fjm-z-index);
-  min-width: 300px;
-  min-height: 200px;
-  color: var(--text-color-B);
-  font-family: var(--fjm-font-family);
-  resize: both;
-  overflow: hidden;
-  box-shadow: var(--glass-hl), var(--elev-3);
-  animation: caldera-pop var(--dur-2) var(--ease-spring);
+ position: absolute;
+ background: var(--bg-0);
+ border: 1px solid var(--border-default);
+ border-radius: var(--radius-lg);
+ z-index: var(--fjm-z-index);
+ min-width: 300px;
+ min-height: 200px;
+ color: var(--text-1);
+ font-family: var(--font-ui);
+ resize: both;
+ overflow: hidden;
+ box-shadow: var(--elev-3);
+ animation: caldera-pop var(--dur-2) var(--ease-spring);
 }
 
 .flow-window-header {
-  cursor: move;
-  padding: 5px 10px;
-  background-color: var(--background-color-B);
-  color: var(--text-color-B);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  user-select: none;
-  height: 30px;
+ cursor: move;
+ padding: 0 12px;
+ background: var(--bg-1);
+ color: var(--text-1);
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ user-select: none;
+ height: 34px;
+ border-bottom: 1px solid var(--border-default);
+ font-size: 12.5px;
+ font-weight: 600;
+ letter-spacing: -.01em;
 }
 
 .flow-close-button {
-  cursor: var(--fjm-button-cursor);
-  font-size: 20px;
-  line-height: 20px;
+ cursor: var(--fjm-button-cursor);
+ font-size: 18px;
+ line-height: 1;
+ color: var(--text-2);
+ padding: 2px 7px;
+ border-radius: var(--radius-sm);
+ transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+
+.flow-close-button:hover {
+ color: var(--text-0);
+ background: var(--hover-strong);
 }
 
 .flow-resize-handle {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  right: 0;
-  bottom: 0;
-  cursor: nwse-resize;
-  background: linear-gradient(135deg, transparent 70%, var(--fjm-border-color) 70%);
+ position: absolute;
+ width: 15px;
+ height: 15px;
+ right: 0;
+ bottom: 0;
+ cursor: nwse-resize;
+ background: linear-gradient(135deg, transparent 65%, var(--border-strong) 65%);
 }
 
 .flow-window-content {
-  padding: 10px;
+ padding: 12px;
 }

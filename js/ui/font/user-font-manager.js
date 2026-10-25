@@ -36,7 +36,7 @@ const fmUserFontManager = {
 const style = document.createElement('style');
 style.textContent = `
   .fm-errorMessage {
-    color: #FAD26A;
+    color: var(--accent);
     padding: 2px;
     margin: 0 0 15px 0;
     text-align: center;

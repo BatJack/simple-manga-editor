@@ -1,76 +1,112 @@
 .introjs-tooltip {
-  background-color: rgba(35, 32, 28, 0.95);
-  color: var(--accent);
-  border-radius: var(--radius-md);
-  padding: 15px;
-  box-shadow: var(--elev-2);
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 14px;
-  max-width: 400px;
-  border: 1px solid var(--accent);
-  backdrop-filter: blur(5px);
-  animation: fadeIn 0s ease-in-out; /* 即時に切り替え */
+background-color: var(--bg-0);
+color: var(--text-0);
+border-radius: var(--radius-lg);
+padding: 16px;
+box-shadow: var(--elev-3);
+font-family: var(--font-ui);
+font-size: 13px;
+max-width: 400px;
+border: 1px solid var(--border-default);
+animation: fadeIn var(--dur-2) var(--ease);
 }
 
 .introjs-tooltiptext {
-  color: var(--accent);
-  text-shadow: 0 0 1px var(--accent), 0 0 2px var(--accent), 0 0 4px var(--accent-hover), 0 0 6px var(--accent-hover); /* ネオンの幅を狭くする */
+color: var(--text-1);
+line-height: 1.6;
 }
 
-.introjs-button, .introjs-tooltip .introjs-button {
-  background-color: var(--bg-0);
-  border: 1px solid var(--accent);
-  border-radius: var(--radius-sm);
-  color: var(--text-0);
-  padding: 10px 15px;
-  text-transform: uppercase;
-  transition: background-color 0s ease-in-out, transform 0s ease-in-out; /* 即時に切り替え */
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: bold;
-  box-shadow: var(--elev-1);
+.introjs-button,
+.introjs-tooltip .introjs-button {
+background-color: var(--bg-2);
+border: 1px solid var(--border-default);
+border-radius: var(--radius-sm);
+color: var(--text-0);
+padding: 6px 14px;
+text-transform: none;
+font-family: inherit;
+transition: background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+cursor: pointer;
+font-size: 12px;
+font-weight: 600;
+box-shadow: none;
 }
 
-.introjs-button:hover, .introjs-tooltip .introjs-button:hover {
-  background-color: var(--bg-1);
-  transform: scale(1.05);
+.introjs-button:hover,
+.introjs-tooltip .introjs-button:hover {
+background-color: var(--bg-3);
+border-color: var(--border-strong);
+color: var(--text-0);
+}
+
+.introjs-button.introjs-next-button,
+.introjs-button.introjs-done-button,
+.introjs-tooltip .introjs-next-button,
+.introjs-tooltip .introjs-done-button {
+background-color: var(--hf-yellow);
+color: var(--hf-ink);
+border-color: var(--hf-yellow-strong);
+}
+
+.introjs-button.introjs-next-button:hover,
+.introjs-button.introjs-done-button:hover,
+.introjs-tooltip .introjs-next-button:hover,
+.introjs-tooltip .introjs-done-button:hover {
+background-color: var(--accent-hover);
+border-color: var(--accent);
+color: var(--hf-ink);
 }
 
 .introjs-overlay {
-  background: rgba(10, 8, 6, 0.72);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  animation: fadeInOverlay 0s ease-in-out; /* 即時に切り替え */
+background: var(--overlay);
+backdrop-filter: var(--glass-blur);
+-webkit-backdrop-filter: var(--glass-blur);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+animation: fadeInOverlay var(--dur-2) var(--ease);
 }
 
 .introjs-title {
-  font-size: 18px;
-  font-weight: bold;
-  background: linear-gradient(15deg, var(--accent), var(--accent-hover));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 1px rgba(212, 175, 55, 0.75), 0 0 2px rgba(255, 99, 71, 0.75);
-  display: flex;
-  align-items: center;
+font-size: 16px;
+font-weight: 600;
+color: var(--text-0);
+display: flex;
+align-items: center;
+}
+
+.introjs-arrow.top {
+border-bottom-color: var(--bg-0);
+}
+
+.introjs-arrow.bottom {
+border-top-color: var(--bg-0);
+}
+
+.introjs-arrow.left {
+border-right-color: var(--bg-0);
+}
+
+.introjs-arrow.right {
+border-left-color: var(--bg-0);
 }
 
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+0% {
+opacity: 0;
+transform: translateY(-6px);
+}
+100% {
+opacity: 1;
+transform: translateY(0);
+}
 }
 
 @keyframes fadeInOverlay {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+0% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
 }

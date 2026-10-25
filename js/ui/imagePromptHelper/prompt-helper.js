@@ -1,7 +1,7 @@
 let flowWindowCount=0;
 
 function createImagePromptHelperFlotingWindow(){
-flowCreateFloatingWindow('Image Prompt Helper',iphHtmlContent,'rgba(0, 38, 255, 0.7)',95,95,0);
+flowCreateFloatingWindow('Image Prompt Helper',iphHtmlContent,'rgba(8, 11, 18, 0.35)',95,95,0);
 
 setTimeout(()=>{
 const saveButton=$('iph-save-button');

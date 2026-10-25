@@ -38,7 +38,7 @@
 
 #gallery-open-folder-btn:hover {
     background: var(--hover-strong);
-    border-color: var(--color-accent, var(--accent));
+    border-color: var(--accent);
 }
 
 #gallery-open-folder-btn i {
@@ -82,7 +82,7 @@
 #gallery-watch-btn:hover,
 #gallery-clear-all-btn:hover {
     background: var(--hover-strong);
-    border-color: var(--color-accent, var(--accent));
+    border-color: var(--accent);
     color: var(--text-1);
 }
 
@@ -132,7 +132,7 @@
     margin: 8px 8px 0;
     padding: 6px 8px;
     border: 1px solid var(--border-default);
-    border-left: 3px solid var(--color-accent, var(--accent));
+    border-left: 3px solid var(--accent);
     border-radius: var(--radius-lg);
     background: var(--bg-2);
     color: var(--text-2);
@@ -377,7 +377,7 @@
 
 .gallery-section-header i {
     font-size: 16px;
-    color: var(--color-accent, var(--accent));
+    color: var(--accent);
     flex-shrink: 0;
 }
 
@@ -401,7 +401,7 @@
 /* Root folder header - flat list, so the opened folder needs a stronger marker */
 .gallery-root-header {
     font-weight: 700;
-    border-left: 3px solid var(--color-accent, var(--accent));
+    border-left: 3px solid var(--accent);
     background: var(--bg-1);
 }
 
@@ -468,7 +468,7 @@
 .gallery-item:hover {
     transform: translateY(-2px);
     box-shadow: var(--elev-2);
-    border-color: var(--color-accent, var(--accent));
+    border-color: var(--accent);
 }
 
 .gallery-thumb {
